@@ -11,7 +11,7 @@ import (
 func main() {
 	var err error
 	var file *os.File
-	f := "input.txt"
+	f := "../inputs/day1.txt"
 	if file, err = os.Open(f); err != nil {
 		fmt.Println("Oh oh, can't open file", file)
 		return
@@ -38,5 +38,7 @@ func main() {
 	}
 
 	sort.Sort(sort.Reverse(sort.IntSlice(totalCalories)))
-	fmt.Println(totalCalories[0])
+	part1 := totalCalories[0]
+	part2 := totalCalories[0] + totalCalories[1] + totalCalories[3]
+	fmt.Printf("Part 1: %d\nPart 2: %d\n", part1, part2)
 }
