@@ -10,7 +10,7 @@ import (
 )
 
 func main() {
-	path, complete := aoc.Setup(2022, 4, true)
+	path, complete := aoc.Setup(2022, 4, false)
 	defer complete()
 
 	var pairs [][]task

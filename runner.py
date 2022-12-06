@@ -2,12 +2,9 @@ from argparse import ArgumentParser
 from time import time_ns
 from traceback import print_exc
 from datetime import datetime, timedelta, timezone
-from importlib import import_module, reload
 
 
 def main(func, filename="filename"):
-    """runner function to speed up seeing the solution
-    """
     try:
         with open(filename) as f:
             try:
@@ -15,7 +12,7 @@ def main(func, filename="filename"):
                 print(func(f), end="\t")
                 end = time_ns()
                 print(f"[{(end - start) / 10**6:.3f} ms]")
-            except:
+            except BaseException:
                 print_exc()
     except FileNotFoundError:
         print()
@@ -36,19 +33,3 @@ if __name__ == "__main__":
     else:
         with open(f"input/{args.year}/day{args.day:02}.txt", "w") as f:
             f.write(get_data(day=args.day, year=args.year))
-
-    module_name = f"python.{args.year}.day{args.day:02}"
-    print(f"{module_name}")
-
-    module = import_module(module_name)
-
-    for i in ("part1", "part2"):
-        if not hasattr(module, i):
-            continue
-        print(f"--- {i} ---")
-        print("sample:", end="\t")
-        main(getattr(module, i),
-             f"input/{args.year}/day{args.day:02}_sample.txt")
-        reload(module)
-        print("actual:", end="\t")
-        main(getattr(module, i), f"input/{args.year}/day{args.day:02}.txt")
