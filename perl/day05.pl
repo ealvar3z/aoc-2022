@@ -19,7 +19,8 @@ sub part_1 {
   }
 <$fh>;
   while (<$fh>) {
-      my ($quantity, $from, $to) = /move ([0-9]+) from ([0-9]+) to ([0-9]+)/;
+      next if $_ !~ /^move/;
+      my ($quantity, $from, $to) = $_ =~ /\d+/g;
       unshift(@{ $stacks[$to - 1] }, reverse splice @{ $stacks[ $from - 1] }, 0, $quantity);
   }
 
@@ -43,7 +44,8 @@ sub part_2 {
   }
 <$fh>;
   while (<$fh>) {
-      my ($quantity, $from, $to) = /move ([0-9]+) from ([0-9]+) to ([0-9]+)/;
+      next if $_ !~ /^move/;
+      my ($quantity, $from, $to) = $_ =~ /\d+/g;
       unshift(@{ $stacks[$to - 1] }, splice @{ $stacks[ $from - 1] }, 0, $quantity);
   }
 
