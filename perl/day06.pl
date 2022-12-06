@@ -26,7 +26,7 @@
 
 =head1 SEE ALSO
   
-  L<AoC|https://adventofcode.com/2022/day/6//>
+  L<AoC|https://adventofcode.com/2022/day/6/>
 
 =cut
 
