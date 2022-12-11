@@ -25,7 +25,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run Advent of Code solutions.")
     parser.add_argument("--year", "-y", type=int, help="The year to run.", default=now.year)
     parser.add_argument("--day", "-d", type=int, help="The day to run.", default=now.day)
-    parser.add_argument("--extra", "-e", help="Choose a different solution to run.")
+    parser.add_argument("--path", "-p", help="Choose a different solution to run (i.e. (sample|input).")
     args = parser.parse_args()
 
     input_paths = {
@@ -43,14 +43,14 @@ if __name__ == "__main__":
                 f.write(get_data(day=args.day, year=args.year))
 
     module_name = f"python.{args.year}.day{args.day:02}"
-    if args.extra:
-        module_name += f"_{args.extra}"
+    if args.path:
+        module_name += f"_{args.path}"
 
     print(f"{module_name}")
 
     module = import_module(module_name)
 
-    for i in ("p1", "p2"):
+    for i in ("part_one", "part_two"):
         if not hasattr(module, i):
             continue
         print(f"--- {i} ---")
