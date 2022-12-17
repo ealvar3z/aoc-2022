@@ -28,6 +28,9 @@ func Setup(yr, day int, ex bool) (string, func()) {
 
 	aocRepo := os.Getenv("AOCDIR")
 	inputPath := filepath.Join(fmt.Sprintf("%s", aocRepo), "input", strconv.Itoa(yr), fn)
+	if aocRepo == "" {
+		fmt.Fprintf(os.Stderr, "ENV var for AOCDIR is not set")
+	}
 	fmt.Println()
 
 	return inputPath, func() {
