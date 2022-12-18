@@ -23,7 +23,7 @@ func Setup(yr, day int, ex bool) (string, func()) {
 
 	if ex {
 		printExFlag()
-		fn = fmt.Sprintf("%s_example.txt", dayName)
+		fn = fmt.Sprintf("%s_sample.txt", dayName)
 	}
 
 	aocRepo := os.Getenv("AOCDIR")
