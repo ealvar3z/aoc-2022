@@ -13,14 +13,14 @@ import (
 	"github.com/ealvar3z/aoc2022/go/lib/numbers"
 )
 
-type position struct {
+type Position struct {
 	x int
 	y int
 }
 
 type Sensor struct {
-	pos    position
-	beacon position
+	pos    Position
+	beacon Position
 }
 
 type Range struct {
@@ -54,11 +54,11 @@ func parse(fpath string) []Sensor {
 		yBeacon, _ := strconv.ParseInt(match[3], 10, 32)
 
 		sensors = append(sensors, Sensor{
-			pos: position{
+			pos: Position{
 				x: int(xSensor),
 				y: int(ySensor),
 			},
-			beacon: position{
+			beacon: Position{
 				x: int(xBeacon),
 				y: int(yBeacon),
 			},
@@ -68,7 +68,7 @@ func parse(fpath string) []Sensor {
 }
 
 func partOne(sensors []Sensor, yAxis int) int {
-	beaconLoc := make(map[position]bool)
+	beaconLoc := make(map[Position]bool)
 
 	// checking minx, maxx
 	minx, maxx := math.MaxInt, math.MinInt
@@ -90,7 +90,7 @@ func partOne(sensors []Sensor, yAxis int) int {
 	// if it's near a sensor && that's the corresponding beacon
 	var answer int
 	for x := minx; x <= maxx; x++ {
-		pos := position{x: x, y: yAxis}
+		pos := Position{x: x, y: yAxis}
 		if beaconLoc[pos] {
 			continue
 		}
@@ -169,6 +169,6 @@ func partTwo(sensors []Sensor, searchArea int) int {
 	return 0
 }
 
-func manhattan(fst, snd position) int {
+func manhattan(fst, snd Position) int {
 	return numbers.Abs(snd.x-fst.x) + numbers.Abs(snd.y-fst.y)
 }
