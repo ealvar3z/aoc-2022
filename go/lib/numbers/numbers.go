@@ -11,6 +11,17 @@ func Abs[T number](input T) T {
 	return input
 }
 
+func Lcm(a, b int) int {
+	return a * b / Gcd(a, b)
+}
+
+func Gcd(a, b int) int {
+	if b == 0 {
+		return a
+	}
+	return Gcd(b, a%b)
+}
+
 func Max[T number](a, b T) T {
 	if a > b {
 		return a

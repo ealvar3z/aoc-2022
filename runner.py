@@ -54,8 +54,8 @@ if __name__ == "__main__":
         if not hasattr(module, i):
             continue
         print(f"--- {i} ---")
-        print("sample:", end="\t")
-        run(getattr(module, i), f"input/{args.year}/day{args.day:02}_sample.txt")
+        # print("sample:", end="\t")
+        # run(getattr(module, i), f"input/{args.year}/day{args.day:02}_sample.txt")
         reload(module)
         print("input:", end="\t")
         run(getattr(module, i), f"input/{args.year}/day{args.day:02}.txt")
