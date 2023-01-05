@@ -3,7 +3,6 @@ package main
 import (
 	"bufio"
 	"container/list"
-	"fmt"
 	"os"
 	"strings"
 
@@ -59,8 +58,8 @@ func (p pos) mod(y, x int) pos {
 func main() {
 	f, _ := aoc.Setup(2022, 24, false)
 	board, begin, end := parse(f)
-	fmt.Println(printBoard(board))
-	fmt.Println(begin, end)
+	// fmt.Println(printBoard(board))
+	// fmt.Println(begin, end)
 	blizzards := blizzGenerator(board)
 	aoc.PrintAnswer(1, partOne(board, begin, end, blizzards))
 	aoc.PrintAnswer(2, partTwo(board, begin, end, blizzards))
